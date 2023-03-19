@@ -35,7 +35,7 @@ Delete product by ID:
 ```
 Delete all products:
 ```
-<Base URL>/products
+[Delete] <Base URL>/products
 ```
 ## Getting Started
 
