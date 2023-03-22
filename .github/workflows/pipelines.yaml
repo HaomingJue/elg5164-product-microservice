@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: elg5164-cluster
   GKE_ZONE: us-east1-b
-  DEPLOYMENT_NAME: github-actions-gke
+  DEPLOYMENT_NAME: github-actions-gke-product
   IMAGE: product-gke-image
   TAG: 1.0.0
 
