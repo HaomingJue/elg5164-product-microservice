@@ -62,6 +62,10 @@ jobs:
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
 
+      - name: Install GKE gCloud Auth plugin
+        run: |-
+          gcloud components install gke-gcloud-auth-plugin
+
       - name: Deploy Image to GKE cluster
         run: |-
           ./kustomize edit set image gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}=gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}
