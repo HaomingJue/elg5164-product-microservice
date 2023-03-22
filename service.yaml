@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: github-actions-gke
+  name: product-microservice-deployment
 spec:
   selector:
-    app: github-actions-gke
+    app: gproduct-microservice-deployment
   type: LoadBalancer
   ports:
     - port: 80

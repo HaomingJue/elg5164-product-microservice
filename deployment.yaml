@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: github-actions-gke
+  name: product-microservice-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: github-actions-gke
+      app: gproduct-microservice-deployment
   template:
     metadata:
       labels:
-        app: github-actions-gke
+        app: product-microservice-deployment
     spec:
       containers:
         - name: app
