@@ -23,8 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup JDK 17
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
           server-id: github
@@ -43,6 +42,7 @@ jobs:
 
       - name: Configure Docker
         run: |-
+          gcloud auth login
           gcloud --quiet auth configure-docker
 
       - name: Get GKE Credentials
@@ -51,20 +51,12 @@ jobs:
 
       - name: Build Docker Image
         run: |-
-          docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$TAG" .
+          docker build --tag "gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}" .
 
       - name: Publish Docker Image to GCR
         run: |-
-          docker push "gcr.io/$PROJECT_ID/$IMAGE:$TAG"
+          docker push "gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}"
 
       - name: Set up Kustomize
         run: |-
-          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-          chmod u+x ./kustomize
-
-      - name: Deploy Image to GKE cluster
-        run: |-
-          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$TAG
-          ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/$DEPLOYMENT_NAME
-          kubectl get services -o wide
+          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.
