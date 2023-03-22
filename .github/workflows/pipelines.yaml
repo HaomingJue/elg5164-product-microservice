@@ -7,8 +7,8 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: autopilot-cluster
-  GKE_ZONE: us-east1
+  GKE_CLUSTER: elg5164-cluster
+  GKE_ZONE: us-east1-b
   DEPLOYMENT_NAME: product-microservice-deployment
   IMAGE: product-gke-image
   TAG: 1.0.0
