@@ -6,6 +6,7 @@ spec:
   selector:
     app: github-actions-gke-product
   type: LoadBalancer
+  loadBalancerIP: 34.148.11.51
   ports:
     - port: 80
       targetPort: 8081
