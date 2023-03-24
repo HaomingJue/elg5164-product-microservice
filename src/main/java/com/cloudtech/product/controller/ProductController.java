@@ -28,6 +28,10 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "hello from product";
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
         Optional<Product> optionalProduct = productService.getProductById(id);
