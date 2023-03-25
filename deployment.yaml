@@ -20,6 +20,7 @@ spec:
         - name: app
           image: gcr.io/elg5164project/product-gke-image:1.0.0
           imagePullPolicy: Always
+          # DO NOT ADD RESOURCES REQUESTS FOR FIRST TIME DEPLOYMENT
           resources:
             # You must specify requests for CPU to autoscale
             # based on CPU utilization
