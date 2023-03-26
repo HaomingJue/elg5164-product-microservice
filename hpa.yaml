@@ -8,11 +8,11 @@ spec:
     kind: Deployment
     name: github-actions-gke-product
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 3
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 30
+          averageUtilization: 80

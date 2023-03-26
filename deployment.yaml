@@ -9,6 +9,10 @@ spec:
       app: github-actions-gke-product
   template:
     metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
       labels:
         app: github-actions-gke-product
     spec:
@@ -16,3 +20,9 @@ spec:
         - name: app
           image: gcr.io/elg5164project/product-gke-image:1.0.0
           imagePullPolicy: Always
+          # DO NOT ADD RESOURCES REQUESTS FOR FIRST TIME DEPLOYMENT
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "50m"
