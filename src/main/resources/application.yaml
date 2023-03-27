@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://sydney.cl50p5r4moax.us-east-1.rds.amazonaws.com:3306/productdb?autoReconnect=true&useSSL=false
+    username: admin
+    password: admin1234
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  hikari:
+    maximum-pool-size: 25
+    minimum-idle: 1
+server:
+  port: 8081
+
+management:
+  enable:
+    process:
+      cpu:
+        usage: true
+
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+prometheus:
+  metrics:
+    export:
+      enabled: true
