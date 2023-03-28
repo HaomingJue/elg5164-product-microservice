@@ -1,16 +1,25 @@
+database: mysql
+
 spring:
-  datasource:
-    url: jdbc:mariadb://sydney.cl50p5r4moax.us-east-1.rds.amazonaws.com:3306/productdb?autoReconnect=true&useSSL=false
-    username: admin
-    password: admin1234
-    driverClassName: org.mariadb.jdbc.Driver
+  cloud:
+    gcp:
+      credentials:
+        location: service-account-key.json
+      sql:
+        database-name: productdb
+        instance-connection-name: golden-ego-381501:us-east5:elg5164-product-db
+  sql:
+    init:
+      mode: always
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-  hikari:
-    maximum-pool-size: 25
-    minimum-idle: 1
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+      minimum-idle: 1
+      password: admin1234
 server:
   port: 8081
 
