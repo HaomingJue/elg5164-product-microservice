@@ -4,12 +4,13 @@ spring:
     username: admin
     password: admin1234
     driverClassName: org.mariadb.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
+  hikari:
+    maximum-pool-size: 25
+    minimum-idle: 1
 server:
   port: 8081
 
@@ -27,4 +28,8 @@ management:
 prometheus:
   metrics:
     export:
+<<<<<<< HEAD
       enabled: true
+=======
+      enabled: true
+>>>>>>> fe0590708b9ce7c0f99297a2216a27fdd7af46fb
