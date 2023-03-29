@@ -10,7 +10,7 @@ spring:
       ddl-auto: update
     show-sql: true
   hikari:
-    maximum-pool-size: 5
+    maximum-pool-size: 10
     minimum-idle: 1
     connection-timeout: 10000
     idle-timeout: 600000
