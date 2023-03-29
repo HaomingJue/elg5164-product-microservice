@@ -1,25 +1,21 @@
-database: mysql
-
 spring:
-  cloud:
-    gcp:
-      credentials:
-        location: service-account-key.json
-      sql:
-        database-name: productdb
-        instance-connection-name: golden-ego-381501:us-east5:elg5164-product-db
-  sql:
-    init:
-      mode: always
+  datasource:
+    url: jdbc:mariadb://product-db-instance.cvtqonvrrocs.us-east-1.rds.amazonaws.com:3306/productdb?autoReconnect=true&useSSL=false
+    username: admin
+    password: admin1234
+    driverClassName: org.mariadb.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-  datasource:
-    hikari:
-      maximum-pool-size: 25
-      minimum-idle: 1
-      password: admin1234
+  hikari:
+    maximum-pool-size: 10
+    minimum-idle: 1
+    connection-timeout: 10000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+
 server:
   port: 8081
 
